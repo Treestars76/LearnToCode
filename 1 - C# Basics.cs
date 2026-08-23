@@ -97,12 +97,11 @@ public class PoopFactory
         // We can create a method inside our method; this makes it so that only the SuperPoopMachine() can use it. Local methods cannot have an access modifier (public, private, etc.).
         void MassProducePoop()
         {
-            // A for loop is a type of loop that executes code repeatedly. It is made of 3 components
-            // 1. Initializer: This starts the loop at a given value. Here we create the integer "PoopCount" and set it to 0. This is the variable that controls the loop.
-            // 2. Condition: This is what decides when the loop proceeds, works just like an if statement. Here, as long as PoopCount is below the OrderQuantity, the loop will execute.
-            // 3. Update: After execution, this expression will update the control variable to determine the next step of the for loop.
-            //    "PoopCount++" is shorthand for increment by 1 and is the same as "PoopCount = PoopCount + 1". "PoopCount--" would decrement instead. You may use any valid expression.
-            for (int PoopCount = 0; PoopCount < OrderQuantity; PoopCount++)
+            // Let's create a count variable to keep track of the produced Poop. The Poop machine will start at 0 Poops.
+            int PoopCount = 0;
+
+            // A while loop will continue to run as long as its condition is true; we can use this to continually produce Poop until the order is fullfilled!
+            while (PoopCount < OrderQuantity)
             {
                 // Produce Poop to the client's specifications using our UltraAdvancedPoopMachine()
                 Poop ProducedPoop = UltraAdvancedPoopMachine(DesiredSize, DesiredMoisture);
@@ -111,6 +110,10 @@ public class PoopFactory
                 // If PoopQC() detects out-of-spec Poop, it will return a 1.
                 // "-=" is a shorthand that means subtract. Depending on PoopQC()'s output, this can set the loop back. "+=" can be used to add instead.
                 PoopCount -= PoopQC(ProducedPoop);
+
+                // After producing a new Poop and saving it, we should update the count by 1. If not, the Poop machine will produce infinite Poop and the Poop economy will crash!
+                // "PoopCount++" is shorthand for increment by 1 and is the same as "PoopCount = PoopCount + 1". "PoopCount--" would decrement instead. You may use any valid expression.
+                PoopCount++;
 
                 // NOTE: MassProducePoop() instantly deletes all ProducedPoop the moment PoopCount iterates to the next step. It is functionally useless.
                 // When making PoopMachines, make sure they save the Poop somewhere or use them for downstream executions!
@@ -210,30 +213,27 @@ public class NewPoopSite
             // If we actually want our Poop machine to be useful, we should have it do someting with all the Poop.
             // Let's create an array to store all the Poops we produce. To create an array, just add "[]" after the data type. This creates an array of Poops, instead of 1 Poop object.
             // The Size of the array is how many items it will store. Let's set it to OrderQuantity so that the array can store exactly as many Poops as is ordered. 
-            PoopFactory.Poop[] PoopOrderList = new PoopFactory.Poop[OrderQuantity];
+            PoopFactory.Poop[] PoopOrderTracker = new PoopFactory.Poop[OrderQuantity];
 
-            // Let's create a count variable to keep track of the produced Poop. The Poop machine will start at 0 Poops.
-            int PoopCount = 0;
-
-            // A while loop will continue to run as long as its condition is true; we can use this to continually produce Poop until the order is fullfilled!
-            while (PoopCount < OrderQuantity)
+            // A for loop is another type of loop that executes code repeatedly. It requires 3 components upon construction:
+            // 1. Initializer: The control variable must be set during for loop construction. Here we declare "PoopCount" (because we have no pre-existing control) and set it to 0.
+            // 2. Condition: This is what decides when the loop proceeds, works just like an if statement. Here, as long as PoopCount is below the OrderQuantity, the loop will execute.
+            // 3. Update: After execution, this expression will update the control variable to determine the next step of the for loop. You may use any valid expression.
+            for (int PoopCount = 0; PoopCount < OrderQuantity; PoopCount++)
             {
                 // Let's use our UltraAdvancedPoopMachine() because it is the only public Poop machine in the PoopFactory class.
                 PoopFactory.Poop ProducedPoop = newPoopFactory.UltraAdvancedPoopMachine(10, 0f);
 
-                // Save the ProducedPoop to the array position [PoopCount]. So every PoopCount (0, 1, 2...) has an associated Poop. 
-                PoopOrderList[PoopCount] = ProducedPoop;
-
-                // After producing a new Poop and saving it, we should update the count by 1. If not, the Poop machine will produce infinite Poop and the Poop economy will crash!
-                PoopCount++;
+                // Save the current ProducedPoop to the array position [PoopCount]. So every PoopCount (0, 1, 2...) has an associated Poop. 
+                PoopOrderTracker[PoopCount] = ProducedPoop;
             }
 
             // You can see what object any position of the array holds directly by submitting the position number as an integer or as a variable that represents an integer.
             // Here the Poop Object FirstPoop is being set to what is in the first position of the array "[0]". Make sure the data types match!
-            PoopFactory.Poop FirstPoop = PoopOrderList[0];
+            PoopFactory.Poop FirstPoop = PoopOrderTracker[0];
 
-            // After the PoopOrderList array is filled, let's send the array to storage so the Poops aren't lost after the Poop machine finishes executing.
-            StorePoops(PoopOrderList);
+            // After the PoopOrderTracker array is filled, let's send the array to storage so the Poops aren't lost after the Poop machine finishes executing.
+            StorePoops(PoopOrderTracker);
         }
     }
 
@@ -246,10 +246,10 @@ public class NewPoopSite
     private void StorePoops(PoopFactory.Poop[] ReceivedPoops)
     {
         // A foreach loop can look at any array or list, and execute once for each specified item contained within.
-        // Here, it looks for PoopFactory.Poop objects found in the ReceivedPoops array and declares a temporary reference variable named SinglePoop.
+        // Here, it looks for PoopFactory.Poop objects found in the ReceivedPoops array and declares a temporary reference variable named SinglePoop for each one.
         foreach (PoopFactory.Poop SinglePoop in ReceivedPoops)
         {
-            // Add the referenced Poop object to the PoopWarehouse List. ".Add()" is a method already defined in the List<> class and can be used by all List<> objects.
+            // Add the referenced Poop object to the PoopWarehouse List. "Add()" is a method already defined in the List<> class and can be used by all List<> objects.
             PoopWarehouse.Add(SinglePoop);
         }
     }
