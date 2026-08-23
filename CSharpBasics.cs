@@ -89,7 +89,7 @@ public class PoopFactory
         // We can enforce this threshold by checking every order with an if statement.
         if (OrderQuantity > MinimumOrderSize)
         {
-            // If the OrderQuantity is larger than the MinimumOrderSize, the MassProducePoop() Method will be executed. Otherwise, do nothing.
+            // If the OrderQuantity is LARGER THAN the MinimumOrderSize, the MassProducePoop() Method will be executed. Otherwise, do nothing.
             MassProducePoop();
         }
 
@@ -125,7 +125,7 @@ public class PoopFactory
                 return 1;
             }
 
-            // else is triggered when the if condition fails.
+            // else is triggered when the if condition fails. It is common to chain an if statement right after.
             else if (PoopToTest.Moisture < DesiredMoisture || PoopToTest.Moisture > DesiredMoisture)
             {
                 // If the Moisture of the produced poop is LESSER THAN DesiredMoisture OR it is GREATER THAN DesiredMoisture, send back a 1 to be subtracted from the loop's PoopCount. 
@@ -167,7 +167,7 @@ public class NewPoopSite
     // Now anyone in the NewPoopSite can use the public members inside the new PoopFactory without rewriting all the code!
     private void GetPoop()
     {
-        // Let's execute the public UltraAdvanedPoopMachine() in PoopFactory to create Poop offsite!
+        // Let's execute the public UltraAdvanedPoopMachine() in the new PoopFactory to create Poop offsite!
         newPoopFactory.UltraAdvancedPoopMachine(6, 0.9f);
 
         // Remember, the Poop class belongs to PoopFactory, if we want to make any new Poop objects outside of PoopFactory we must still use the Poop class as defined in PoopFactory.
