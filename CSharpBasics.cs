@@ -1,5 +1,5 @@
 // When using calls outside of the default namespace, the namespace those calls belong to must be initialized.
-// System is very common namespace and Let's you make system calls. In this script "DateTime" is the only call that requires System.
+// System is very common namespace and lets you make system calls. In this script "DateTime" is the only call that requires System.
 using System;
 
 // In this script, "List<>" is the only call that requires System.Collections.Generic.
@@ -45,7 +45,7 @@ public class PoopFactory
         // Create Poop!
         Poop newAdvancedPoop = new Poop();
 
-        // Define the parameters of the ideal Poop.
+        // Define the properties of the ideal Poop.
         newAdvancedPoop.Size = 5;
         newAdvancedPoop.Moisture = 0.3f;
 
@@ -168,7 +168,7 @@ public class NewPoopSite
     // Now anyone in the NewPoopSite can use the public members inside the new PoopFactory without rewriting all the code!
     private void GetPoop()
     {
-        // Let's execute the public UltraAdvanedPoopMachine() in the new PoopFactory to create Poop offsite!
+        // Let's execute the public UltraAdvancedPoopMachine() in the new PoopFactory to create Poop offsite!
         newPoopFactory.UltraAdvancedPoopMachine(6, 0.9f);
 
         // Remember, the Poop class belongs to PoopFactory, if we want to make any new Poop objects outside of PoopFactory we must still use the Poop class as defined in PoopFactory.
@@ -228,12 +228,17 @@ public class NewPoopSite
                 PoopCount++;
             }
 
+            // You can see what object any position of the array holds directly by submitting the position number as an integer or as a variable that represents an integer.
+            // Here the Poop Object FirstPoop is being set to what is in the first position of the array "[0]". Make sure the data types match!
+            PoopFactory.Poop FirstPoop = PoopOrderList[0];
+
             // After the PoopOrderList array is filled, let's send the array to storage so the Poops aren't lost after the Poop machine finishes executing.
             StorePoops(PoopOrderList);
         }
     }
 
     // We can use a List<> to store all of our Poops. Creating a List<> is similar to creating any variable, but the data type goes into the "<>".
+    // A List<> can hold a variable number of items, unlike arrays. Which you use depends on the application. 
     // NOTE: "List<>" requires the System.Collections.Generic namespace.
     private List<PoopFactory.Poop> PoopWarehouse = new List<PoopFactory.Poop>();
 
