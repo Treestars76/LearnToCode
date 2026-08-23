@@ -232,7 +232,7 @@ public class NewPoopSite
         }
     }
 
-    // We can use a List<> to store all of our Poops. Lists have no fixed size unlike arrays.
+    // We can use a List<> to store all of our Poops. Creating a List<> is similar to creating any variable, but the data type goes into the "<>".
     // NOTE: "List<>" requires the System.Collections.Generic namespace.
     private List<PoopFactory.Poop> PoopWarehouse = new List<PoopFactory.Poop>();
 
