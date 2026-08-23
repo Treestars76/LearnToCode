@@ -5,7 +5,7 @@ using System;
 // In this script, "List<>" is the only call that requires System.Collections.Generic.
 using System.Collections.Generic;
 
-// Every script must have at least one Top-Level class. Today we are making a Poop Factory, so let's call our parent class PoopFactory.
+// The code in a script is usually organized into a Top-Level class. Today we are making a Poop Factory, so let's call our top level class PoopFactory.
 public class PoopFactory
 {
     // Define what poop is with a class. THIS IS NOT POOP! This is just a set of definitions for what constitutes poop, but we can use this to make poop!
