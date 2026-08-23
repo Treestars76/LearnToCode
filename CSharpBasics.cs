@@ -206,7 +206,7 @@ public class NewPoopSite
         // If the output of PoopFactoryIsOpen(CurrentTime) EQUALS true, this Poop machine will accept the order.
         if (PoopFactoryIsOpen(CurrentTime) == true)
         {
-            // If we actually want our Poop machine to be useful, we should have it do someting.
+            // If we actually want our Poop machine to be useful, we should have it do someting wit the all the Poop.
             // Let's create an array to store all the Poops we produce. To create an array, just add "[]" after the data type. This creates an array of Poops, instead of 1 Poop object.
             // The Size of the array is how many items it will store. Let's set it to OrderQuantity so that the array can store exactly as many Poops as is ordered. 
             PoopFactory.Poop[] PoopOrderList = new PoopFactory.Poop[OrderQuantity];
