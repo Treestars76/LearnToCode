@@ -20,7 +20,8 @@ There is only one script so far. (`CSharpBasics.cs`) serves as a comprehensive b
 
 ---
 
-If you are using this as a learning resource, I highly recommend downloading and modifying the scripts yourself and seeing what the compiler expects.
+If you are using this as a learning resource, I highly recommend downloading and modifying the scripts yourself and seeing what the compiler does.
+
 If you are still looking around for an IDE / Code Editor, I highly recommend Helix! Its a bit of a chore to setup, but it's lightning fast and I am having a lot of fun with it.
 
 Thanks!
