@@ -111,7 +111,7 @@ public class PoopFactory
                 // "-=" is a shorthand that means subtract. Depending on PoopQC()'s output, this can set the loop back. "+=" can be used to add instead.
                 PoopCount -= PoopQC(ProducedPoop);
 
-                // After producing a new Poop and saving it, we should update the count by 1. If not, the Poop machine will produce infinite Poop and the Poop economy will crash!
+                // After producing a new Poop, we should update the count by 1. If not, the Poop machine will produce infinite Poop forever and the Poop economy will crash!
                 // "PoopCount++" is shorthand for increment by 1 and is the same as "PoopCount = PoopCount + 1". "PoopCount--" would decrement instead. You may use any valid expression.
                 PoopCount++;
 
@@ -162,7 +162,7 @@ public class PoopFactory
     // Top-Level classes cannot be private or protected!
 }
 
-// So far, we have only made Poop inside the PoopFactory, but we should be to make poop anywhere without rewriting all the Poop code.
+// So far, we have only made Poop inside the PoopFactory, but we should be able to make poop anywhere without rewriting all the Poop code.
 public class NewPoopSite
 {
     // First, we need to make a new instance of PoopFactory at this new location because it is a class and not a real object.
